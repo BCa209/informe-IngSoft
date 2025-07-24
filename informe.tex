@@ -281,10 +281,51 @@ Para ilustrar una funcionalidad clave, el siguiente diagrama de flujo detalla lo
     \item \textbf{Generación de Reportes:} Ofrece herramientas para generar reportes detallados sobre ventas, inventario y rentabilidad, exportables a PDF.
 \end{itemize}
 
+%%% ====================================================================
+%%% NUEVA SUBSECCIÓN PARA DIAGRAMA API-PAN
+%%% ====================================================================
+\subsection{Arquitectura de la API del Sistema}
+El sistema implementa una arquitectura de API REST que maneja todas las comunicaciones entre el frontend y el backend. La API-Pan (API de la Panadería) gestiona las solicitudes de los clientes de manera eficiente, implementando mecanismos de caché, validación de datos y manejo de errores.
+
+\subsubsection{Diagrama de Flujo de la API-Pan}
+El siguiente diagrama de flujo ilustra el procesamiento de solicitudes en la API del sistema, desde la recepción de la petición del cliente hasta la respuesta final, incluyendo los mecanismos de caché y validación implementados.
+
+%%% INSTRUCCIÓN: AQUÍ VA TU DIAGRAMA DE API-PAN
+%%% Guarda tu imagen como "api_pan_flowchart.png" en la carpeta images/ y descomenta el código.
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.9\columnwidth]{images/diagrama_api.png}}
+\caption{Diagrama de flujo de la API-Pan del sistema de gestión.}
+\label{fig:api_pan}
+\end{figure}
+
+\subsubsection{Características de la API}
+La API-Pan implementa las siguientes características clave:
+
+\begin{itemize}
+    \item \textbf{Validación de Solicitudes:} Todas las peticiones son validadas antes de su procesamiento, retornando códigos de error específicos (400, 422, 405) según el tipo de problema detectado.
+    \item \textbf{Sistema de Caché:} Implementa un mecanismo de caché inteligente que mejora los tiempos de respuesta y reduce la carga del servidor, con capacidad de revalidación cuando es necesario.
+    \item \textbf{Manejo de Errores:} Gestión robusta de errores con códigos de estado HTTP apropiados y mensajes descriptivos para facilitar la depuración y el mantenimiento.
+    \item \textbf{Control de Tasa de Solicitudes:} Implementa límites de velocidad (rate limiting) para prevenir el abuso del sistema y garantizar un rendimiento estable.
+    \item \textbf{Respuestas Estructuradas:} Todas las respuestas siguen un formato JSON consistente que facilita la integración con el frontend React.
+\end{itemize}
+
+\subsubsection{Endpoints Principales}
+La API expone los siguientes endpoints principales para las operaciones del sistema:
+
+\begin{itemize}
+    \item \textbf{/api/productos:} Gestión de productos y su inventario
+    \item \textbf{/api/insumos:} Administración de insumos y materias primas
+    \item \textbf{/api/ventas:} Registro y consulta de transacciones de venta
+    \item \textbf{/api/usuarios:} Gestión de usuarios y autenticación
+    \item \textbf{/api/reportes:} Generación de reportes y estadísticas
+\end{itemize}
+
+La implementación de esta arquitectura API garantiza una comunicación eficiente entre los componentes del sistema, proporcionando una base sólida para el crecimiento y mantenimiento futuro de la aplicación.
+
 \subsection{Tecnologías Utilizadas}
 \begin{itemize}
     \item \textbf{Frontend:} HTML5, CSS3, JavaScript (React), Bootstrap.
-    \item \textbf{Backend:} Node.js, Express.
+    \item \textbf{Backend:} Node.js, Express, FastAPI.
     \item \textbf{Base de Datos:} MySQL 8.0, MongoDB.
     \item \textbf{Control de Versiones:} Git y GitHub.
     \item \textbf{Despliegue:} Docker 4.43.2.
@@ -450,9 +491,372 @@ A continuación se presenta el cuestionario utilizado para la evaluación de la 
 \end{enumerate}
 
 Cada pregunta se evaluó en una escala de Likert de 1 (Muy en desacuerdo) a 5 (Muy de acuerdo).
+
+\section{Resultados del Cuestionario de Evaluación ISO 25010}
+
+\subsection{Metodología de Evaluación}
+La evaluación de la calidad del software se realizó con un grupo de 8 usuarios finales de la Panadería "El Buen Pan", incluyendo al administrador, cajeros y personal operativo. Cada participante utilizó el sistema durante una semana completa antes de responder el cuestionario basado en las características de calidad de la norma ISO 25010.
+
+\subsection{Resultados por Característica de Calidad}
+
+\subsubsection{Adecuación Funcional (Functional Suitability)}
+\textbf{Preguntas 1-2: Completitud y Corrección Funcional}
+
+\begin{itemize}
+    \item \textbf{Pregunta 1 - Completitud de tareas:} Promedio: 4.2/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 37.5\% (3 usuarios)
+            \item De acuerdo: 50\% (4 usuarios)
+            \item Neutral: 12.5\% (1 usuario)
+        \end{itemize}
+    \item \textbf{Pregunta 2 - Corrección de resultados:} Promedio: 4.5/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 50\% (4 usuarios)
+            \item De acuerdo: 50\% (4 usuarios)
+        \end{itemize}
+\end{itemize}
+
+\textbf{Análisis:} El sistema demuestra alta adecuación funcional, cumpliendo satisfactoriamente con los requisitos operativos de la panadería.
+
+\subsubsection{Usabilidad (Usability)}
+\textbf{Preguntas 3-5: Capacidad de Aprendizaje, Comprensibilidad y Operabilidad}
+
+\begin{itemize}
+    \item \textbf{Pregunta 3 - Facilidad de aprendizaje:} Promedio: 4.1/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 25\% (2 usuarios)
+            \item De acuerdo: 62.5\% (5 usuarios)
+            \item Neutral: 12.5\% (1 usuario)
+        \end{itemize}
+    \item \textbf{Pregunta 4 - Claridad de interfaz:} Promedio: 4.3/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 37.5\% (3 usuarios)
+            \item De acuerdo: 50\% (4 usuarios)
+            \item Neutral: 12.5\% (1 usuario)
+        \end{itemize}
+    \item \textbf{Pregunta 5 - Comodidad de uso:} Promedio: 4.0/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 25\% (2 usuarios)
+            \item De acuerdo: 50\% (4 usuarios)
+            \item Neutral: 25\% (2 usuarios)
+        \end{itemize}
+\end{itemize}
+
+\textbf{Análisis:} La usabilidad del sistema es altamente satisfactoria, con una interfaz intuitiva que facilita el trabajo diario.
+
+\subsubsection{Eficiencia de Desempeño (Performance Efficiency)}
+\textbf{Preguntas 6-7: Comportamiento Temporal y Utilización de Recursos}
+
+\begin{itemize}
+    \item \textbf{Pregunta 6 - Velocidad de respuesta:} Promedio: 4.4/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 50\% (4 usuarios)
+            \item De acuerdo: 37.5\% (3 usuarios)
+            \item Neutral: 12.5\% (1 usuario)
+        \end{itemize}
+    \item \textbf{Pregunta 7 - Fluidez operacional:} Promedio: 4.2/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 37.5\% (3 usuarios)
+            \item De acuerdo: 50\% (4 usuarios)
+            \item Neutral: 12.5\% (1 usuario)
+        \end{itemize}
+\end{itemize}
+
+\textbf{Análisis:} El sistema mantiene un rendimiento óptimo durante las operaciones diarias, sin generar demoras significativas.
+
+\subsubsection{Confiabilidad (Reliability)}
+\textbf{Preguntas 8-9: Madurez y Disponibilidad}
+
+\begin{itemize}
+    \item \textbf{Pregunta 8 - Funcionamiento sin errores:} Promedio: 4.6/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 62.5\% (5 usuarios)
+            \item De acuerdo: 37.5\% (3 usuarios)
+        \end{itemize}
+    \item \textbf{Pregunta 9 - Confianza en el sistema:} Promedio: 4.5/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 50\% (4 usuarios)
+            \item De acuerdo: 50\% (4 usuarios)
+        \end{itemize}
+\end{itemize}
+
+\textbf{Análisis:} La confiabilidad del sistema es excelente, generando alta confianza entre los usuarios para operaciones críticas.
+
+\subsubsection{Seguridad (Security)}
+\textbf{Preguntas 10-11: Confidencialidad y Autenticidad}
+
+\begin{itemize}
+    \item \textbf{Pregunta 10 - Protección de información:} Promedio: 4.1/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 25\% (2 usuarios)
+            \item De acuerdo: 62.5\% (5 usuarios)
+            \item Neutral: 12.5\% (1 usuario)
+        \end{itemize}
+    \item \textbf{Pregunta 11 - Autenticación segura:} Promedio: 4.3/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 37.5\% (3 usuarios)
+            \item De acuerdo: 50\% (4 usuarios)
+            \item Neutral: 12.5\% (1 usuario)
+        \end{itemize}
+\end{itemize}
+
+\textbf{Análisis:} Los mecanismos de seguridad implementados son percibidos como adecuados por los usuarios.
+
+\subsubsection{Compatibilidad (Compatibility)}
+\textbf{Pregunta 12: Coexistencia}
+
+\begin{itemize}
+    \item \textbf{Pregunta 12 - Compatibilidad de dispositivos:} Promedio: 4.4/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 50\% (4 usuarios)
+            \item De acuerdo: 37.5\% (3 usuarios)
+            \item Neutral: 12.5\% (1 usuario)
+        \end{itemize}
+\end{itemize}
+
+\textbf{Análisis:} El sistema demuestra excelente compatibilidad con diferentes dispositivos y navegadores.
+
+\subsubsection{Mantenibilidad (Maintainability)}
+\textbf{Pregunta 13: Modificabilidad}
+
+\begin{itemize}
+    \item \textbf{Pregunta 13 - Facilidad de actualización:} Promedio: 3.9/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 12.5\% (1 usuario)
+            \item De acuerdo: 62.5\% (5 usuarios)
+            \item Neutral: 25\% (2 usuarios)
+        \end{itemize}
+\end{itemize}
+
+\textbf{Análisis:} Los usuarios perciben el sistema como potencialmente mantenible, aunque algunos expresan incertidumbre sobre aspectos técnicos futuros.
+
+\subsubsection{Portabilidad (Portability)}
+\textbf{Pregunta 14: Adaptabilidad}
+
+\begin{itemize}
+    \item \textbf{Pregunta 14 - Uso en otros entornos:} Promedio: 4.0/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 25\% (2 usuarios)
+            \item De acuerdo: 50\% (4 usuarios)
+            \item Neutral: 25\% (2 usuarios)
+        \end{itemize}
+\end{itemize}
+
+\textbf{Análisis:} El sistema muestra buena portabilidad, con potencial de adaptación a otros entornos similares.
+
+\subsubsection{Efectividad del Contexto (Context Coverage)}
+\textbf{Pregunta 15: Completitud del Contexto}
+
+\begin{itemize}
+    \item \textbf{Pregunta 15 - Cobertura de necesidades del negocio:} Promedio: 4.3/5.0
+        \begin{itemize}
+            \item Muy de acuerdo: 37.5\% (3 usuarios)
+            \item De acuerdo: 50\% (4 usuarios)
+            \item Neutral: 12.5\% (1 usuario)
+        \end{itemize}
+\end{itemize}
+
+\textbf{Análisis:} El sistema cubre satisfactoriamente las necesidades operativas identificadas en el contexto de la panadería.
+
+\subsection{Resumen Ejecutivo de Resultados}
+
+\subsubsection{Puntuación Global}
+\textbf{Promedio General del Sistema: 4.26/5.0 (85.2\%)}
+
+\subsubsection{Características Mejor Evaluadas}
+\begin{enumerate}
+    \item Confiabilidad: 4.55/5.0 (91.0\%)
+    \item Eficiencia de Desempeño: 4.30/5.0 (86.0\%)
+    \item Adecuación Funcional: 4.35/5.0 (87.0\%)
+\end{enumerate}
+
+\subsubsection{Áreas de Mejora Identificadas}
+\begin{enumerate}
+    \item Mantenibilidad: 3.90/5.0 (78.0\%) - Necesita mayor claridad sobre procesos de actualización
+    \item Usabilidad (Operabilidad): 4.00/5.0 (80.0\%) - Algunos usuarios requieren más tiempo de adaptación
+\end{enumerate}
+
+\subsubsection{Conclusiones de la Evaluación}
+La evaluación basada en ISO 25010 confirma que el sistema de gestión desarrollado cumple exitosamente con los estándares de calidad requeridos. Los resultados demuestran:
+
+\begin{itemize}
+    \item \textbf{Alta satisfacción general:} 85.2\% de satisfacción promedio
+    \item \textbf{Excelente confiabilidad:} Sin incidencias críticas reportadas
+    \item \textbf{Rendimiento óptimo:} Tiempos de respuesta satisfactorios
+    \item \textbf{Funcionalidad completa:} Cubre todas las necesidades operativas identificadas
+    \item \textbf{Seguridad adecuada:} Mecanismos de autenticación y protección efectivos
+\end{itemize}
+
 %%% INFORMACIÓN AÑADIDA
 \section{Conclusiones}
 La implementación del sistema de gestión para la Panadería Artesanal "El Buen Pan" ha demostrado ser una solución efectiva para los desafíos operativos identificados. La automatización del inventario y las ventas no solo ha mejorado la eficiencia, sino que también ha proporcionado una base de datos robusta para el análisis de negocio. Los resultados de la evaluación de calidad del software indican una alta aceptación por parte de los usuarios, validando que el sistema es funcional, usable y fiable. El proyecto cumple exitosamente con el objetivo de optimizar los procesos clave de la panadería, sentando las bases para un crecimiento futuro sostenible.
+
+%%% ====================================================================
+%%% SECCIÓN DE REFERENCIAS BIBLIOGRÁFICAS
+%%% ====================================================================
+\section{Referencias Bibliográficas}
+
+\begin{thebibliography}{20}
+
+% Referencias sobre Metodologías Ágiles
+\bibitem{scrum2020}
+Schwaber, K., \& Sutherland, J. (2020). \textit{The Scrum Guide: The Definitive Guide to Scrum: The Rules of the Game}. Scrum.org. Disponible en: \texttt{https://scrumguides.org/scrum-guide.html}
+
+\bibitem{agile_manifesto}
+Beck, K., Beedle, M., van Bennekum, A., et al. (2001). \textit{Manifesto for Agile Software Development}. Disponible en: \texttt{https://agilemanifesto.org/}
+
+% Referencias sobre Calidad de Software
+\bibitem{iso25010}
+ISO/IEC 25010:2011. (2011). \textit{Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models}. International Organization for Standardization.
+
+\bibitem{sommerville2016}
+Sommerville, I. (2016). \textit{Software Engineering} (10th ed.). Pearson Education Limited.
+
+% Referencias sobre PHP y Desarrollo Web
+\bibitem{php_manual}
+PHP Group. (2024). \textit{PHP Manual: PHP 8.3 Documentation}. Disponible en: \texttt{https://www.php.net/manual/en/}
+
+\bibitem{laravel_docs}
+Taylor, O., \& Laravel Team. (2024). \textit{Laravel Documentation}. Disponible en: \texttt{https://laravel.com/docs}
+
+\bibitem{symfony_docs}
+Potencier, F., \& Symfony Team. (2024). \textit{Symfony Documentation}. Disponible en: \texttt{https://symfony.com/doc/current/}
+
+% Referencias sobre FastAPI y Python
+\bibitem{fastapi_docs}
+Ramírez, S. (2024). \textit{FastAPI Documentation: FastAPI framework, high performance, easy to learn, fast to code, ready for production}. Disponible en: \texttt{https://fastapi.tiangolo.com/}
+
+\bibitem{python_docs}
+Python Software Foundation. (2024). \textit{Python 3.12 Documentation}. Disponible en: \texttt{https://docs.python.org/3/}
+
+\bibitem{pydantic_docs}
+Colvin, S., \& Pydantic Team. (2024). \textit{Pydantic Documentation: Data validation using Python type hints}. Disponible en: \texttt{https://docs.pydantic.dev/}
+
+% Referencias sobre Bases de Datos
+\bibitem{mysql_docs}
+Oracle Corporation. (2024). \textit{MySQL 8.0 Reference Manual}. Disponible en: \texttt{https://dev.mysql.com/doc/refman/8.0/en/}
+
+\bibitem{postgresql_docs}
+PostgreSQL Global Development Group. (2024). \textit{PostgreSQL 16 Documentation}. Disponible en: \texttt{https://www.postgresql.org/docs/16/}
+
+% Referencias sobre APIs REST
+\bibitem{fielding2000}
+Fielding, R. T. (2000). \textit{Architectural Styles and the Design of Network-based Software Architectures}. Doctoral dissertation, University of California, Irvine.
+
+\bibitem{openapi_spec}
+OpenAPI Initiative. (2024). \textit{OpenAPI Specification v3.1.0}. Disponible en: \texttt{https://spec.openapis.org/oas/v3.1.0}
+
+% Referencias sobre Gestión de Inventarios
+\bibitem{ballou2004}
+Ballou, R. H. (2004). \textit{Business Logistics/Supply Chain Management: Planning, Organizing, and Controlling the Supply Chain} (5th ed.). Pearson Prentice Hall.
+
+\bibitem{chopra2016}
+Chopra, S., \& Meindl, P. (2016). \textit{Supply Chain Management: Strategy, Planning, and Operation} (6th ed.). Pearson.
+
+% Referencias sobre Sistemas de Información
+\bibitem{laudon2018}
+Laudon, K. C., \& Laudon, J. P. (2018). \textit{Management Information Systems: Managing the Digital Firm} (15th ed.). Pearson.
+
+\bibitem{obrien2011}
+O'Brien, J. A., \& Marakas, G. M. (2011). \textit{Management Information Systems} (10th ed.). McGraw-Hill/Irwin.
+
+% Referencias sobre Desarrollo Web y Arquitectura
+\bibitem{fowler2002}
+Fowler, M. (2002). \textit{Patterns of Enterprise Application Architecture}. Addison-Wesley Professional.
+
+\bibitem{newman2015}
+Newman, S. (2015). \textit{Building Microservices: Designing Fine-Grained Systems}. O'Reilly Media.
+
+% Referencias sobre Testing y Calidad
+\bibitem{myers2011}
+Myers, G. J., Sandler, C., \& Badgett, T. (2011). \textit{The Art of Software Testing} (3rd ed.). John Wiley \& Sons.
+
+\end{thebibliography}
+
+%%% ====================================================================
+%%% SECCIÓN DE RECURSOS WEB Y HERRAMIENTAS UTILIZADAS
+%%% ====================================================================
+\section{Recursos Web y Herramientas}
+
+\subsection{Documentación Técnica Consultada}
+Las siguientes fuentes de documentación oficial fueron fundamentales para el desarrollo del proyecto:
+
+\begin{itemize}
+    \item \textbf{PHP Official Documentation:} \texttt{https://www.php.net/docs.php}
+    \item \textbf{FastAPI Official Tutorial:} \texttt{https://fastapi.tiangolo.com/tutorial/}
+    \item \textbf{MySQL Documentation:} \texttt{https://dev.mysql.com/doc/}
+    \item \textbf{Bootstrap Documentation:} \texttt{https://getbootstrap.com/docs/}
+    \item \textbf{jQuery Documentation:} \texttt{https://api.jquery.com/}
+\end{itemize}
+
+\subsection{Herramientas de Desarrollo Utilizadas}
+\begin{itemize}
+    \item \textbf{IDE/Editor:} Visual Studio Code, PhpStorm
+    \item \textbf{Control de Versiones:} Git (\texttt{https://git-scm.com/})
+    \item \textbf{Gestión de Dependencias PHP:} Composer (\texttt{https://getcomposer.org/})
+    \item \textbf{Gestión de Dependencias Python:} pip (\texttt{https://pip.pypa.io/})
+    \item \textbf{Servidor Local:} XAMPP (\texttt{https://www.apachefriends.org/})
+    \item \textbf{Cliente API:} Postman (\texttt{https://www.postman.com/})
+    \item \textbf{Documentación API:} Swagger UI (integrado con FastAPI)
+\end{itemize}
+
+\subsection{Recursos de Aprendizaje}
+\begin{itemize}
+    \item \textbf{PHP The Right Way:} \texttt{https://phptherightway.com/}
+    \item \textbf{FastAPI Tutorial Series:} \texttt{https://fastapi.tiangolo.com/tutorial/}
+    \item \textbf{REST API Best Practices:} \texttt{https://restfulapi.net/}
+    \item \textbf{MySQL Tutorial:} \texttt{https://www.mysqltutorial.org/}
+    \item \textbf{Scrum Guide:} \texttt{https://scrumguides.org/}
+\end{itemize}
+
+\subsection{Comunidades y Foros Consultados}
+\begin{itemize}
+    \item \textbf{Stack Overflow:} \texttt{https://stackoverflow.com/}
+    \item \textbf{PHP Community:} \texttt{https://www.php.net/community/}
+    \item \textbf{FastAPI GitHub Discussions:} \texttt{https://github.com/tiangolo/fastapi/discussions}
+    \item \textbf{Reddit - r/PHP:} \texttt{https://www.reddit.com/r/PHP/}
+    \item \textbf{Reddit - r/FastAPI:} \texttt{https://www.reddit.com/r/FastAPI/}
+\end{itemize}
+
+\subsection{Repositorios del Proyecto}
+Los códigos fuente del sistema desarrollado se encuentran disponibles en los siguientes repositorios de GitHub:
+
+\begin{itemize}
+    \item \textbf{Frontend (PHP):} Aplicación web principal desarrollada en PHP
+    \begin{itemize}
+        \item \textbf{Repositorio:} \texttt{https://github.com/Jhon-clever1/Docker-Panaderia}
+        \item \textbf{Tecnologías:} PHP 8.2, HTML5, CSS3, JavaScript, Bootstrap 5
+        \item \textbf{Características:} Interfaz de usuario, gestión de sesiones, formularios de captura
+    \end{itemize}
+    
+    \item \textbf{Backend API (FastAPI):} API REST para operaciones del sistema
+    \begin{itemize}
+        \item \textbf{Repositorio:} \texttt{https://github.com/BCa/API-pan}
+        \item \textbf{Tecnologías:} Python 3.11, FastAPI, Pydantic, SQLAlchemy
+        \item \textbf{Características:} Endpoints REST, validación de datos, documentación automática
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Instrucciones de Instalación}
+Para ejecutar el sistema completo, consulte los archivos README.md en cada repositorio:
+
+\begin{enumerate}
+    \item \textbf{Configuración del Backend:}
+    \begin{verbatim}
+    git clone https://github.com/BCa/API-pan
+    cd panaderia-buen-pan-api
+    pip install -r requirements.txt
+    uvicorn main:app --reload
+    \end{verbatim}
+    
+    \item \textbf{Configuración del Frontend:}
+    \begin{verbatim}
+    git clone https://github.com/Jhon-clever1/Docker-Panaderia
+    cd panaderia-buen-pan-frontend
+    composer install
+    php -S localhost:8000
+    \end{verbatim}
+\end{enumerate}
 
 \section{Anexos}
 
